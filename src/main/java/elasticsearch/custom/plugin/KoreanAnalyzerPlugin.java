@@ -18,6 +18,9 @@ public class KoreanAnalyzerPlugin extends Plugin implements AnalysisPlugin {
     public Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> getTokenFilters() {
         Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> filters = new HashMap<>();
 
+        // 1. 한글 초성 분리 필터
+        filters.put("choseong_filter", ChoSeongTokenFilterBuilder::new);
+
         return filters;
     }
 }
