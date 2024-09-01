@@ -20,6 +20,8 @@ public class KoreanAnalyzerPlugin extends Plugin implements AnalysisPlugin {
 
         // 1. 한글 초성 분리 필터
         filters.put("choseong_filter", ChoSeongTokenFilterBuilder::new);
+        // 2. 한글 자음,모음 분리(자소 분리) 필터
+        filters.put("jamo_filter", JamoTokenFilterBuilder::new);
 
         return filters;
     }
