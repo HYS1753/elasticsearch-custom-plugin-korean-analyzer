@@ -4,6 +4,7 @@ import elasticsearch.custom.plugin.builder.ChoSeongTokenFilterBuilder;
 import elasticsearch.custom.plugin.builder.Eng2KorTokenFilterBuilder;
 import elasticsearch.custom.plugin.builder.JamoTokenFilterBuilder;
 import elasticsearch.custom.plugin.builder.Kor2EngTokenFilterBuilder;
+import org.elasticsearch.index.analysis.CharFilterFactory;
 import org.elasticsearch.index.analysis.TokenFilterFactory;
 import org.elasticsearch.index.analysis.TokenizerFactory;
 import org.elasticsearch.indices.analysis.AnalysisModule;
@@ -25,6 +26,8 @@ public class KoreanAnalyzerPlugin extends Plugin implements AnalysisPlugin {
         filters.put("jamo_filter", JamoTokenFilterBuilder::new);
         // 3. 한글 -> 영문 변환 필터
         filters.put("kor2eng_filter", Kor2EngTokenFilterBuilder::new);
+        // 4. 영문 -> 한글 변환 필터
+        filters.put("eng2kor_filter", Eng2KorTokenFilterBuilder::new);
 
         return filters;
     }
